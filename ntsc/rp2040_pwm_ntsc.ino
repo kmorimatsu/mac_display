@@ -249,20 +249,21 @@ void loop(void)
 {
   unsigned char* text=(unsigned char*)"Hello, NTSC World! Hello, MachiKania World!..      ";
   for (size_t y=0;y<FRAME_HEIGHT;y++){
-    if (24>y || 247<y) {
+    if (28>y || 243<y) {
       for (size_t x=0;x<FRAME_WIDTH;x++){
         framebuffer[x+y*FRAME_WIDTH] = 0x00;
       }
     } else {
       for (size_t x=0;x<FRAME_WIDTH;x++){
-        if (x<4 || 363<x) framebuffer[x+y*FRAME_WIDTH] = 0x00;
-        else {
+        if (x<14 || 349<x) framebuffer[x+y*FRAME_WIDTH] = 0x00;
+        else if (y<124) {
           // Color test
-          framebuffer[x+y*FRAME_WIDTH] = (((x-4)>>3)&1) ^ (((y-24)>>3)&1) ? 0x7f : 0xff;
-          if ((font[text[(x-4)>>3]*8+((y-24)&7)]<<((x-4)&7))&0x80) framebuffer[x+y*FRAME_WIDTH] = 0xC0;
+          framebuffer[x+y*FRAME_WIDTH] = (((x-14)>>3)&1) ^ (((y-28)>>3)&1) ? 0x7f : 0xff;
+          if ((font[text[(x-14)>>3]*8+((y-28)&7)]<<((x-14)&7))&0x80) framebuffer[x+y*FRAME_WIDTH] = 0xC0;
+        } else {
           // Black and white test
-          //framebuffer[x+y*FRAME_WIDTH] = 0x00;
-          //if ((font[text[(x-4)>>3]*8+((y-24)&7)]<<((x-4)&7))&0x80) framebuffer[x+y*FRAME_WIDTH] = 0xff;
+          framebuffer[x+y*FRAME_WIDTH] = 0x00;
+          if ((font[text[(x-14)>>3]*8+((y-28)&7)]<<((x-14)&7))&0x80) framebuffer[x+y*FRAME_WIDTH] = 0xff;
         }
       }
     }
