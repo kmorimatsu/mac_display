@@ -4,7 +4,7 @@ This directory contains the NTSC display projects connected to MachiKania type P
 Raspberry Pi Pico is used.
 ## Connection
 The GP19 is the video out pin for NTSC display.  
-![schematic.png](shematic.png)
+![schematic.png](schematic.png)
 ## Compile
 Use Arduino IDE with [ArduinoCore by earlephilhower](https://github.com/earlephilhower/arduino-pico).
 ## License
